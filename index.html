@@ -1,28 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="ch">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<style type="text/css">
-body,td,th {
-	font-size: xx-large;
-	color: #F0F;
-}
-body {
-	background-color: #D6D6D6;
-	background-image: url(../backgroud/001.png);
-}
-</style>
-</head>
+<meta charset="UTF-8">
+<title>jQuery左右列表选项框代码 - 源码之家</title>
 
+<link href="css/dsSelect.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/dsSelect.js"></script>
+
+</head>
 <body>
-<div align="center">Durscarlet </div>
-<p>
-  <!-- #BeginDate format:wfcAm3a -->Friday, 11/02/2018 9:57 PM<!-- #EndDate -->
+
 </p>
-<p>HA<label>膜蛤不要命+1s</label></p>
-<form id="form1" name="form1" method="post" action="">
-  <input name="按钮1" type="button" id="按钮1" onclick="MM_goToURL('parent','index2.html');return document.MM_returnValue" value="点击续一秒" />
-</form>
-<p>&nbsp;</p>
+<!--这一层div做限定，无需管-->
+<div style="width:800px; margin: 0px auto">
+
+<button onClick="leftValues()">获取左侧数据</button>
+<button onClick="rightValues()">获取右侧数据</button>
+<button onClick="disableButtons()">禁用按钮</button>
+<button onClick="start()">启用按钮</button>
+
+	<!--正文-->
+	<div class="dsSelect" id="dsSelectTemp">
+
+	</div>
+
+
+</div>
+<p>
+
+<script type="text/javascript">
+    let dsSelectObj = new dsSelect("dsSelectTemp");
+    dsSelectObj.multiSelect =true;
+    dsSelectObj.init();
+    let datas = [
+        {id:"1",name:"选项1"},
+        {id:"2",name:"选项2"},
+        {id:"3",name:"选项3"},
+        {id:"4",name:"选项4"},
+        {id:"5",name:"选项5"},
+        {id:"6",name:"选项6"},
+    ];
+    let datasR=[
+        {id:"16",name:"选项16"},
+        {id:"17",name:"选项17"},
+        {id:"18",name:"选项18"},
+        {id:"19",name:"选项19"},
+    ];
+    dsSelectObj.setLeftData(datas,"name");
+    dsSelectObj.setRightData(datasR,"name");
+
+    function leftValues(){
+        alert(JSON.stringify(dsSelectObj.getSelectLeftValus()));
+    }
+    function rightValues(){
+       alert(JSON.stringify(dsSelectObj.getSelectRightValus()));
+    }
+    function disableButtons(){
+        dsSelectObj.disableButtons();
+    }
+
+    function start(){
+        dsSelectObj.restartButtons();
+    }
+</script>
+
+<div style="text-align:center;">
+<p>更多源码：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+</div>
+</body>
 </html>
